@@ -1,22 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
-import Card from './Card/Card';
-import DrawButton from './DrawButton/DrawButton';
-/*import {initializeApp} from 'firebase/app';
-import 'firebase/database';
-
-import { DB_CONFIG } from './Config/Firebase/db_config.js';*/
-
-class App extends Component {
-  constructor(props){
-    super(props);
-
-    /*this.app = initializeApp(DB_CONFIG);
-    this.database = this.app.database().ref().child('cards');*/
-    this.updateCard = this.updateCard.bind(this);
-
-    this.state = {
-      "cards": [
+{
+    "cards": [
         {
             "id": 1,
             "eng": "to be",
@@ -157,66 +140,5 @@ class App extends Component {
             "pin": "wáng",
             "pt": "rei"
         }
-    ],
-      currentCard: {} 
-    }
-  }
-
-
-  componentWillMount(){
-    //console.log(this.app.database().ref().child('cards'))
-    const currentCards = this.state.cards;
-
-    /*this.database.on('child_added', snap => {
-      currentCards.push({
-        id: snap.key,
-        eng:snap.val().eng,
-        han:snap.val().han,
-        pin:snap.val().pin,
-        pt:snap.val().pt
-      })
-      })*/
-      
-
-    
-    this.setState({
-      cards: currentCards,
-      currentCard: this.getRandomCard(currentCards)
-    })
-
-  }
-
-  getRandomCard(currentCards){
-    var card = currentCards[Math.floor(Math.random() * currentCards.length)];
-    return(card);
-  }
-
-  updateCard(){
-    const currentCards = this.state.cards;
-
-    this.setState({
-      currentCard: this.getRandomCard(currentCards)
-    })
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <div className='cardRow'>
-          
-          <Card 
-                han={this.state.currentCard.han}
-                pin={this.state.currentCard.pin}
-                pt={this.state.currentCard.pt}
-                eng={this.state.currentCard.eng}
-          />
-        </div>
-        <div className='buttonRow'>
-          <DrawButton drawCard={this.updateCard}/>
-        </div>
-      </div>
-    );
-  }
+    ]
 }
-
-export default App;
